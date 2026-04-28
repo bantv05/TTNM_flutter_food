@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/screens/Home/Home01.dart';
 import 'package:flutter_application_1/screens/cart/cart02.dart';
 import 'package:flutter_application_1/screens/discount/discount01.dart';
 import 'package:flutter_application_1/screens/order/order01.dart';
@@ -85,6 +86,19 @@ void main() {
     expect(find.text('Rating'), findsOneWidget);
     expect(find.text('Tracking'), findsOneWidget);
     expect(find.text('Order'), findsOneWidget);
+    expect(find.text('Home'), findsOneWidget);
+    expect(find.text('Location'), findsOneWidget);
+    expect(find.text('Profile'), findsOneWidget);
+  });
+
+  testWidgets('home screen from vina branch still renders', (tester) async {
+    await tester.pumpWidget(const MainApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Home'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(Home01), findsOneWidget);
   });
 }
 

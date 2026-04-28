@@ -11,7 +11,17 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
+# Flutter local files (IMPORTANT)
+.metadata
+.tmp-appdata/
 
+# Dart/Flutter cache
+.dart_tool/
+build/
+
+# OS / IDE
+*.log
+*.tmp
 # IntelliJ related
 *.iml
 *.ipr
