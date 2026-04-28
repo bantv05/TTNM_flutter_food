@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
+=======
+>>>>>>> origin/hong-branch
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_application_1/screens/cart/cart02.dart';
@@ -12,6 +15,7 @@ import 'package:flutter_application_1/screens/tracking/tracking05.dart';
 import 'package:flutter_application_1/screens/tracking/tracking06.dart';
 
 void main() {
+<<<<<<< HEAD
   group('Cart02 flow', () {
     testWidgets(
       'applies a promotion in discount screen and updates cart totals',
@@ -60,6 +64,14 @@ void main() {
         await _advanceAndExpect<Tracking06Screen>(tester);
       },
     );
+=======
+  testWidgets('order screen renders key content', (WidgetTester tester) async {
+    await tester.pumpWidget(const FoodOrderApp());
+
+    expect(find.text('Order #A2309'), findsOneWidget);
+    expect(find.text('Your items'), findsOneWidget);
+    expect(find.text('Track order'), findsOneWidget);
+>>>>>>> origin/hong-branch
   });
 }
 
