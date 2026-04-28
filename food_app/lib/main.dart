@@ -15,6 +15,7 @@ import 'screens/cart/cart01.dart';
 import 'screens/cart/cart02.dart';
 import 'screens/discount/discount01.dart';
 import 'screens/discount/discount02.dart';
+import 'screens/order/order01.dart';
 import 'screens/rating/rating01.dart';
 import 'screens/rating/rating02.dart';
 import 'screens/rating/rating03.dart';
@@ -142,6 +143,15 @@ class FlowSelectorScreen extends StatelessWidget {
             subtitle: 'Tracking 01 -> Tracking 06',
             onTap: () =>
                 Navigator.pushNamed(context, Tracking01Screen.routeName),
+          ),
+          _FlowButton(
+            title: 'Order',
+            subtitle: 'Order and cancel-order flow',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const Order01Screen(),
+              ),
+            ),
           ),
         ],
       ),

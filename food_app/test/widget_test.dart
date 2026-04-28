@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/screens/cart/cart02.dart';
 import 'package:flutter_application_1/screens/discount/discount01.dart';
+import 'package:flutter_application_1/screens/order/order01.dart';
 import 'package:flutter_application_1/screens/rating/rating01.dart';
 import 'package:flutter_application_1/screens/tracking/tracking01.dart';
 import 'package:flutter_application_1/screens/tracking/tracking02.dart';
@@ -16,7 +18,7 @@ void main() {
     testWidgets(
       'applies a promotion in discount screen and updates cart totals',
       (tester) async {
-        await tester.pumpWidget(_buildTestApp());
+        await tester.pumpWidget(_buildCartTestApp());
         await tester.pumpAndSettle();
 
         expect(find.byType(Cart02Screen), findsOneWidget);
@@ -45,7 +47,7 @@ void main() {
     testWidgets(
       'moves from tracking01 to tracking06 every five seconds after placing an order',
       (tester) async {
-        await tester.pumpWidget(_buildTestApp());
+        await tester.pumpWidget(_buildCartTestApp());
         await tester.pumpAndSettle();
 
         await tester.tap(find.byKey(const Key('cart-place-order-button')));
@@ -61,9 +63,32 @@ void main() {
       },
     );
   });
+
+  testWidgets('order flow renders key content', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Order01Screen(),
+      ),
+    );
+
+    expect(find.textContaining('SP 0023900'), findsOneWidget);
+    expect(find.textContaining('SP 0023512'), findsOneWidget);
+  });
+
+  testWidgets('main flow selector renders merged entries', (tester) async {
+    await tester.pumpWidget(const MainApp());
+    await tester.pumpAndSettle();
+
+    expect(find.text('Burger'), findsOneWidget);
+    expect(find.text('Cart'), findsOneWidget);
+    expect(find.text('Discount'), findsOneWidget);
+    expect(find.text('Rating'), findsOneWidget);
+    expect(find.text('Tracking'), findsOneWidget);
+    expect(find.text('Order'), findsOneWidget);
+  });
 }
 
-Widget _buildTestApp() {
+Widget _buildCartTestApp() {
   return MaterialApp(
     home: const Cart02Screen(),
     routes: {

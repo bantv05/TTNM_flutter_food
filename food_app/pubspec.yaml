@@ -59,6 +59,10 @@ flutter:
   assets:
     - assets/images/burger/
     - assets/images/cart/
+    - assets/images/order/sp0023900/
+    - assets/images/order/sp0023512/
+    - assets/images/order/sp0023502/
+    - assets/images/order/sp0023450/
     - assets/images/rating/
     - assets/images/tracking/
 
