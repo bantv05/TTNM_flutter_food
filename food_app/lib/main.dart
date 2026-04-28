@@ -1,10 +1,38 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'screens/Home/Home01.dart';
+import 'screens/Home/Home02.dart';
+import 'screens/Home/app_routes.dart';
+import 'screens/Location/Diachi1.dart';
+import 'screens/Location/Diachi2.dart';
+import 'screens/Location/Diachi3.dart';
+import 'screens/Location/Diachi4.dart';
+import 'screens/Location/Diachi5.dart';
+import 'screens/Location/Diachi6.dart';
+import 'screens/Location/diachi4_routes.dart';
+import 'screens/Location/diachi_routes.dart';
+import 'screens/Profile/Hoso1.dart';
+import 'screens/Profile/Hoso2.dart';
+import 'screens/Profile/Hoso3.dart';
+import 'screens/Profile/Hoso4.dart';
+import 'screens/Profile/hoso_routes.dart';
+import 'screens/burger/burger01.dart';
+import 'screens/burger/burger02.dart';
+import 'screens/burger/burger03.dart';
+import 'screens/burger/burger04.dart';
+import 'screens/burger/burger05.dart';
+import 'screens/burger/burger06.dart';
+import 'screens/burger/burger07.dart';
+import 'screens/burger/burger08.dart';
+import 'screens/burger/burger09.dart';
+import 'screens/burger/burger10.dart';
+import 'screens/burger/burger_widgets.dart';
 import 'screens/cart/cart01.dart';
 import 'screens/cart/cart02.dart';
 import 'screens/discount/discount01.dart';
 import 'screens/discount/discount02.dart';
+import 'screens/order/order01.dart';
 import 'screens/rating/rating01.dart';
 import 'screens/rating/rating02.dart';
 import 'screens/rating/rating03.dart';
@@ -22,72 +50,16 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-import 'screens/burger/burger01.dart';
-import 'screens/burger/burger02.dart';
-import 'screens/burger/burger03.dart';
-import 'screens/burger/burger04.dart';
-import 'screens/burger/burger05.dart';
-import 'screens/burger/burger06.dart';
-import 'screens/burger/burger07.dart';
-import 'screens/burger/burger08.dart';
-import 'screens/burger/burger09.dart';
-import 'screens/burger/burger10.dart';
-import 'screens/burger/burger_widgets.dart';
-
-void main() {
-  runApp(const BurgerApp());
-}
-
-class BurgerApp extends StatelessWidget {
-  const BurgerApp({super.key});
-import 'screens/order/order01.dart';
-
-void main() {
-  runApp(const FoodOrderApp());
-}
-
-class FoodOrderApp extends StatelessWidget {
-  const FoodOrderApp({super.key});
-import 'screens/Profile/Hoso1.dart';
-import 'screens/Profile/Hoso2.dart';
-import 'screens/Profile/Hoso3.dart';
-import 'screens/Profile/Hoso4.dart';
-import 'screens/Profile/hoso_routes.dart';
-import 'screens/Location/Diachi1.dart';
-import 'screens/Location/Diachi2.dart';
-import 'screens/Location/diachi_routes.dart';
-import 'screens/Location/Diachi3.dart';
-import 'screens/Location/Diachi4.dart';
-import 'screens/Location/Diachi5.dart';
-import 'screens/Location/Diachi6.dart';
-import 'screens/Location/diachi4_routes.dart';
-import 'screens/Home/app_routes.dart';
-import 'screens/Home/Home01.dart';
-import 'screens/Home/Home02.dart';
-
-void main() {
-  runApp(const FoodApp());
-}
-
-class FoodApp extends StatelessWidget {
-  const FoodApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color(0xFFF7F3EE);
-    const accentColor = Color(0xFFDA6A35);
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Cart Screens',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFFF9900),
-          brightness: Brightness.light,
-      title: 'Burger Flow',
+      title: 'Food App Flows',
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: BurgerColors.canvas,
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'Roboto',
         colorScheme: ColorScheme.fromSeed(
           seedColor: BurgerColors.primary,
           primary: BurgerColors.primary,
@@ -121,11 +93,22 @@ class FoodApp extends StatelessWidget {
             vertical: 16,
           ),
         ),
-        scaffoldBackgroundColor: Colors.white,
-        useMaterial3: true,
       ),
-      initialRoute: Cart01Screen.routeName,
+      builder: (context, child) {
+        return _PhoneFrameShell(child: child ?? const SizedBox.shrink());
+      },
+      home: const FlowSelectorScreen(),
       routes: {
+        Burger01Screen.routeName: (_) => const Burger01Screen(),
+        Burger02Screen.routeName: (_) => const Burger02Screen(),
+        Burger03Screen.routeName: (_) => const Burger03Screen(),
+        Burger04Screen.routeName: (_) => const Burger04Screen(),
+        Burger05Screen.routeName: (_) => const Burger05Screen(),
+        Burger06Screen.routeName: (_) => const Burger06Screen(),
+        Burger07Screen.routeName: (_) => const Burger07Screen(),
+        Burger08Screen.routeName: (_) => const Burger08Screen(),
+        Burger09Screen.routeName: (_) => const Burger09Screen(),
+        Burger10Screen.routeName: (_) => const Burger10Screen(),
         Cart01Screen.routeName: (_) => const Cart01Screen(),
         Cart02Screen.routeName: (_) => const Cart02Screen(),
         Discount01Screen.routeName: (_) => const Discount01Screen(),
@@ -140,50 +123,6 @@ class FoodApp extends StatelessWidget {
         Tracking04Screen.routeName: (_) => const Tracking04Screen(),
         Tracking05Screen.routeName: (_) => const Tracking05Screen(),
         Tracking06Screen.routeName: (_) => const Tracking06Screen(),
-      initialRoute: Burger01Screen.routeName,
-      routes: {
-        Burger01Screen.routeName: (_) => const Burger01Screen(),
-        Burger02Screen.routeName: (_) => const Burger02Screen(),
-        Burger03Screen.routeName: (_) => const Burger03Screen(),
-        Burger04Screen.routeName: (_) => const Burger04Screen(),
-        Burger05Screen.routeName: (_) => const Burger05Screen(),
-        Burger06Screen.routeName: (_) => const Burger06Screen(),
-        Burger07Screen.routeName: (_) => const Burger07Screen(),
-        Burger08Screen.routeName: (_) => const Burger08Screen(),
-        Burger09Screen.routeName: (_) => const Burger09Screen(),
-        Burger10Screen.routeName: (_) => const Burger10Screen(),
-      },
-      title: 'Food Order',
-      theme: ThemeData(
-        useMaterial3: true,
-        scaffoldBackgroundColor: backgroundColor,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: accentColor,
-          brightness: Brightness.light,
-          surface: Colors.white,
-        ),
-        textTheme: ThemeData.light().textTheme.apply(
-              bodyColor: const Color(0xFF241B16),
-              displayColor: const Color(0xFF241B16),
-            ),
-      ),
-      home: const Order01Screen(),
-      title: 'ViNa Food App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFF97316),
-          brightness: Brightness.light,
-        ),
-        scaffoldBackgroundColor: const Color(0xFFF8FAFC),
-        useMaterial3: true,
-        fontFamily: 'Roboto',
-      ),
-      builder: (context, child) {
-        return _PhoneFrameShell(child: child ?? const SizedBox.shrink());
-      },
-      initialRoute: AppRoutes.home01,
-      routes: {
         DiaChiRoutes.diachi1: (context) => const Diachi1(),
         DiaChiRoutes.diachi2: (context) => const Diachi2(),
         DiaChi4Routes.diachi3: (context) => const Diachi3(),
@@ -197,6 +136,100 @@ class FoodApp extends StatelessWidget {
         AppRoutes.home01: (context) => const Home01(),
         AppRoutes.home02: (context) => const Home02(),
       },
+    );
+  }
+}
+
+class FlowSelectorScreen extends StatelessWidget {
+  const FlowSelectorScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Food App Flows')),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          _FlowButton(
+            title: 'Burger',
+            subtitle: 'Burger 01 -> Burger 10',
+            onTap: () => Navigator.pushNamed(context, Burger01Screen.routeName),
+          ),
+          _FlowButton(
+            title: 'Cart',
+            subtitle: 'Cart 01 -> Cart 02',
+            onTap: () => Navigator.pushNamed(context, Cart01Screen.routeName),
+          ),
+          _FlowButton(
+            title: 'Discount',
+            subtitle: 'Discount 01 -> Discount 02',
+            onTap: () =>
+                Navigator.pushNamed(context, Discount01Screen.routeName),
+          ),
+          _FlowButton(
+            title: 'Rating',
+            subtitle: 'Rating 01 -> Rating 04',
+            onTap: () => Navigator.pushNamed(context, Rating01Screen.routeName),
+          ),
+          _FlowButton(
+            title: 'Tracking',
+            subtitle: 'Tracking 01 -> Tracking 06',
+            onTap: () =>
+                Navigator.pushNamed(context, Tracking01Screen.routeName),
+          ),
+          _FlowButton(
+            title: 'Order',
+            subtitle: 'Order and cancel-order flow',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const Order01Screen(),
+              ),
+            ),
+          ),
+          _FlowButton(
+            title: 'Home',
+            subtitle: 'Home flow from vina-branch',
+            onTap: () => Navigator.pushNamed(context, AppRoutes.home01),
+          ),
+          _FlowButton(
+            title: 'Location',
+            subtitle: 'Address selection and map flow',
+            onTap: () => Navigator.pushNamed(context, DiaChiRoutes.diachi1),
+          ),
+          _FlowButton(
+            title: 'Profile',
+            subtitle: 'Profile flow from vina-branch',
+            onTap: () => Navigator.pushNamed(context, HoSoRoutes.hoso1),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _FlowButton extends StatelessWidget {
+  const _FlowButton({
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
+
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Card(
+        child: ListTile(
+          title: Text(title),
+          subtitle: Text(subtitle),
+          trailing: const Icon(Icons.arrow_forward_ios),
+          onTap: onTap,
+        ),
+      ),
     );
   }
 }
@@ -284,4 +317,3 @@ class _PhoneFrameShell extends StatelessWidget {
     );
   }
 }
-
