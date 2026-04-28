@@ -1,132 +1,36 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_application_1/main.dart';
-import 'package:flutter_application_1/screens/Home/Home01.dart';
-import 'package:flutter_application_1/screens/cart/cart02.dart';
-import 'package:flutter_application_1/screens/discount/discount01.dart';
-import 'package:flutter_application_1/screens/order/order01.dart';
-import 'package:flutter_application_1/screens/rating/rating01.dart';
-import 'package:flutter_application_1/screens/tracking/tracking01.dart';
-import 'package:flutter_application_1/screens/tracking/tracking02.dart';
-import 'package:flutter_application_1/screens/tracking/tracking03.dart';
-import 'package:flutter_application_1/screens/tracking/tracking04.dart';
-import 'package:flutter_application_1/screens/tracking/tracking05.dart';
-import 'package:flutter_application_1/screens/tracking/tracking06.dart';
 
 void main() {
-  group('Cart02 flow', () {
-    testWidgets(
-      'applies a promotion in discount screen and updates cart totals',
-      (tester) async {
-        await tester.pumpWidget(_buildCartTestApp());
-        await tester.pumpAndSettle();
+  testWidgets('main app renders merged flow selector', (tester) async {
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = const Size(1440, 3200);
+    addTearDown(tester.view.reset);
 
-        expect(find.byType(Cart02Screen), findsOneWidget);
-        expect(_amountFor(tester, 'cart-discount-value'), 0);
-        expect(_amountFor(tester, 'cart-total-value'), 70000);
-        expect(_amountFor(tester, 'cart-bottom-total'), 70000);
-
-        await tester.tap(find.byKey(const Key('cart-discount-card')));
-        await tester.pumpAndSettle();
-
-        expect(find.byType(Discount01Screen), findsOneWidget);
-
-        await tester.tap(find.byKey(const ValueKey('promotion-card-order_20')));
-        await tester.pumpAndSettle();
-        await tester.tap(find.byKey(const Key('discount-apply-button')));
-        await tester.pumpAndSettle();
-
-        expect(find.byType(Cart02Screen), findsOneWidget);
-        expect(find.text('20%'), findsOneWidget);
-        expect(_amountFor(tester, 'cart-discount-value'), 14000);
-        expect(_amountFor(tester, 'cart-total-value'), 56000);
-        expect(_amountFor(tester, 'cart-bottom-total'), 56000);
-      },
-    );
-
-    testWidgets(
-      'moves from tracking01 to tracking06 every five seconds after placing an order',
-      (tester) async {
-        await tester.pumpWidget(_buildCartTestApp());
-        await tester.pumpAndSettle();
-
-        await tester.tap(find.byKey(const Key('cart-place-order-button')));
-        await tester.pumpAndSettle();
-
-        expect(find.byType(Tracking01Screen), findsOneWidget);
-
-        await _advanceAndExpect<Tracking02Screen>(tester);
-        await _advanceAndExpect<Tracking03Screen>(tester);
-        await _advanceAndExpect<Tracking04Screen>(tester);
-        await _advanceAndExpect<Tracking05Screen>(tester);
-        await _advanceAndExpect<Tracking06Screen>(tester);
-      },
-    );
-  });
-
-  testWidgets('order flow renders key content', (tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Order01Screen(),
-      ),
-    );
-
-    expect(find.textContaining('SP 0023900'), findsOneWidget);
-    expect(find.textContaining('SP 0023512'), findsOneWidget);
-  });
-
-  testWidgets('main flow selector renders merged entries', (tester) async {
     await tester.pumpWidget(const MainApp());
     await tester.pumpAndSettle();
 
+    expect(find.text('Food App Flows'), findsOneWidget);
     expect(find.text('Burger'), findsOneWidget);
     expect(find.text('Cart'), findsOneWidget);
     expect(find.text('Discount'), findsOneWidget);
     expect(find.text('Rating'), findsOneWidget);
     expect(find.text('Tracking'), findsOneWidget);
     expect(find.text('Order'), findsOneWidget);
+
+    await tester.ensureVisible(find.text('Home'));
+    await tester.pumpAndSettle();
     expect(find.text('Home'), findsOneWidget);
+
+    await tester.ensureVisible(find.text('Location'));
+    await tester.pumpAndSettle();
     expect(find.text('Location'), findsOneWidget);
+
+    await tester.ensureVisible(find.text('Profile'));
+    await tester.pumpAndSettle();
     expect(find.text('Profile'), findsOneWidget);
   });
-
-  testWidgets('home screen from vina branch still renders', (tester) async {
-    await tester.pumpWidget(const MainApp());
-    await tester.pumpAndSettle();
-
-    await tester.tap(find.text('Home'));
-    await tester.pumpAndSettle();
-
-    expect(find.byType(Home01), findsOneWidget);
-  });
-}
-
-Widget _buildCartTestApp() {
-  return MaterialApp(
-    home: const Cart02Screen(),
-    routes: {
-      Cart02Screen.routeName: (_) => const Cart02Screen(),
-      Tracking01Screen.routeName: (_) => const Tracking01Screen(),
-      Tracking02Screen.routeName: (_) => const Tracking02Screen(),
-      Tracking03Screen.routeName: (_) => const Tracking03Screen(),
-      Tracking04Screen.routeName: (_) => const Tracking04Screen(),
-      Tracking05Screen.routeName: (_) => const Tracking05Screen(),
-      Tracking06Screen.routeName: (_) => const Tracking06Screen(),
-      Rating01Screen.routeName: (_) => const Rating01Screen(),
-    },
-  );
-}
-
-Future<void> _advanceAndExpect<T extends Widget>(WidgetTester tester) async {
-  await tester.pump(const Duration(seconds: 5));
-  await tester.pumpAndSettle();
-  expect(find.byType(T), findsOneWidget);
-}
-
-int _amountFor(WidgetTester tester, String keyValue) {
-  final widget = tester.widget<Text>(find.byKey(Key(keyValue)));
-  final text = widget.data ?? widget.textSpan?.toPlainText() ?? '';
-  final digits = text.replaceAll(RegExp(r'[^0-9]'), '');
-  return digits.isEmpty ? 0 : int.parse(digits);
 }

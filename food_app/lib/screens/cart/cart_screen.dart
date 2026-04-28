@@ -803,14 +803,18 @@ class _InfoCard extends StatelessWidget {
                       Icon(icon, color: _CartScreenState._iconAccent, size: 20),
                       const SizedBox(width: 8),
                       // ignore: use_null_aware_elements
-                      if (customTitle != null) customTitle!,
+                      if (customTitle != null) Expanded(child: customTitle!),
                       if (customTitle == null && title != null)
-                        Text(
-                          title!,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: _CartScreenState._neutral900,
+                        Expanded(
+                          child: Text(
+                            title!,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: _CartScreenState._neutral900,
+                            ),
                           ),
                         ),
                     ],
