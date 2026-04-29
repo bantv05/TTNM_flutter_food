@@ -55,7 +55,7 @@ class _Rating02ScreenState extends State<Rating02Screen> {
               width: 160,
               height: 160,
               child: Image.asset(
-                'assets/images/rating/driver_avatar.png',
+                'assets/images/custom/driver_minh.png',
                 fit: BoxFit.cover,
                 errorBuilder: (_, _, _) {
                   return Container(

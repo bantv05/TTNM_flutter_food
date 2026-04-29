@@ -28,6 +28,9 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  static const String _burgerImage = 'assets/images/custom/burger_real.png';
+  static const String _drinkImage = 'assets/images/custom/drink_real.png';
+  static const String _friesImage = 'assets/images/custom/fries_real.png';
   static const Color _primary = Color(0xFFFF9900);
   static const Color _primarySoft = Color(0xFFEAC285);
   static const Color _secondary = Color(0xFFFFC700);
@@ -445,7 +448,7 @@ class _CartScreenState extends State<CartScreen> {
         const CartItemData(
           id: 'extra-burger',
           name: 'Burger Gà Phi-lê Giòn Rùm',
-          imageAsset: 'assets/images/cart/burger.png',
+          imageAsset: _burgerImage,
           originalPrice: 50000,
           discountPrice: 35000,
           quantity: 1,
@@ -492,7 +495,7 @@ class _CartScreenState extends State<CartScreen> {
       CartItemData(
         id: 'burger',
         name: 'Burger Gà Phi-lê Giòn Rùm',
-        imageAsset: 'assets/images/cart/burger.png',
+        imageAsset: _burgerImage,
         originalPrice: 50000,
         discountPrice: 35000,
         quantity: 1,
@@ -504,7 +507,7 @@ class _CartScreenState extends State<CartScreen> {
       CartItemData(
         id: 'drink',
         name: 'Soda Chanh Tuyết',
-        imageAsset: 'assets/images/cart/drink.png',
+        imageAsset: _drinkImage,
         originalPrice: 20000,
         discountPrice: 15000,
         quantity: 1,
@@ -512,7 +515,7 @@ class _CartScreenState extends State<CartScreen> {
       CartItemData(
         id: 'fries',
         name: 'Khoai Tây',
-        imageAsset: 'assets/images/cart/fries.png',
+        imageAsset: _friesImage,
         discountPrice: 20000,
         quantity: 1,
       ),

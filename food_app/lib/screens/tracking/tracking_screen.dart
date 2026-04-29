@@ -9,6 +9,7 @@ const Color trackingNeutral900 = Color(0xFF0D1217);
 const Color trackingNeutral400 = Color(0xFF4C555F);
 const Color trackingNeutral100 = Color(0xFFBABDC1);
 const Color trackingNeutral50 = Color(0xFFE9EAEB);
+const String trackingDriverAvatar = 'assets/images/custom/driver_minh.png';
 
 enum TrackingStage { searching, step1, step2, step3, step4, success }
 
@@ -480,11 +481,7 @@ class _SearchingCard extends StatelessWidget {
           CircleAvatar(
             radius: 22,
             backgroundColor: Colors.white24,
-            child: Icon(
-              Icons.account_circle_rounded,
-              size: 34,
-              color: Colors.white,
-            ),
+            backgroundImage: AssetImage(trackingDriverAvatar),
           ),
           SizedBox(width: 16),
           Text(
@@ -532,14 +529,7 @@ class _DriverCard extends StatelessWidget {
                 CircleAvatar(
                   radius: 22,
                   backgroundColor: Colors.white,
-                  child: Text(
-                    'M',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      color: trackingNeutral900,
-                    ),
-                  ),
+                  backgroundImage: AssetImage(trackingDriverAvatar),
                 ),
                 SizedBox(width: 16),
                 Column(
