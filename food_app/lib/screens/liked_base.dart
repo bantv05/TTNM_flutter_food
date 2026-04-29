@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-const String kLikedBurgerCrispyAsset = 'assets/images/hang2/hinh6.png';
-const String kLikedBurgerCheeseAsset = 'assets/images/hang2/hinh7.png';
-const String kLikedChickenAsset = 'assets/images/hang2/hinh8.png';
-const String kLikedFriesAsset = 'assets/images/hang2/hinh9.png';
+const String kLikedBurgerCrispyAsset =
+    'assets/images/custom/burger_crispy_white.png';
+const String kLikedBurgerCheeseAsset =
+    'assets/images/custom/burger_floating_classic.png';
+const String kLikedChickenAsset =
+    'assets/images/custom/chicken_korean_sauce.png';
+const String kLikedFriesAsset =
+    'assets/images/custom/fries_cheese_loaded.png';
 
 const Color kLikedAccent = Color(0xFFF4A52A);
 const Color kLikedBg = Color(0xFFF7F7F7);

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'burger_widgets.dart';
 
-const burgerDetailImageAsset = 'assets/images/burger/burger01_03.png';
+const burgerDetailImageAsset =
+    'assets/images/custom/burger_golden_chicken.png';
 
 class BurgerDetailFrame extends StatelessWidget {
   const BurgerDetailFrame({
