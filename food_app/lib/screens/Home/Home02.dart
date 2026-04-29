@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_routes.dart';
+import '../burger/burger01.dart';
 import 'home_design.dart';
 
 class Home02 extends StatelessWidget {
@@ -12,11 +12,7 @@ class Home02 extends StatelessWidget {
       titleLine: 'Giao đến -> Nhà riêng',
       subtitleLine: '570 Núi Thành, Hòa Cường, Đà Nẵng',
       showProfileAvatar: true,
-      onDealTap: () => Navigator.pushNamedAndRemoveUntil(
-        context,
-        AppRoutes.home01,
-        (route) => false,
-      ),
+      onDealTap: () => Navigator.pushNamed(context, Burger01Screen.routeName),
     );
   }
 }

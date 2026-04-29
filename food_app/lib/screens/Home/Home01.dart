@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_routes.dart';
+import '../burger/burger01.dart';
 import 'home_design.dart';
 
 class Home01 extends StatelessWidget {
@@ -12,7 +12,7 @@ class Home01 extends StatelessWidget {
       titleLine: 'Chọn địa điểm của bạn',
       subtitleLine: '',
       showProfileAvatar: false,
-      onDealTap: () => Navigator.pushNamed(context, AppRoutes.home02),
+      onDealTap: () => Navigator.pushNamed(context, Burger01Screen.routeName),
     );
   }
 }

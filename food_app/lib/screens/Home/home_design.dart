@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../burger/burger01.dart';
 import '../cart/cart01.dart';
 import '../liked.dart';
 import '../Location/diachi_routes.dart';
+import '../order/order01.dart';
 import '../Profile/hoso_routes.dart';
 import 'app_routes.dart';
 
@@ -76,7 +78,10 @@ class _AddressHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: Column(
+          child: InkWell(
+            onTap: () => Navigator.pushNamed(context, DiaChiRoutes.diachi1),
+            borderRadius: BorderRadius.circular(12),
+            child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
@@ -133,6 +138,7 @@ class _AddressHeader extends StatelessWidget {
                 ),
               ],
             ],
+          ),
           ),
         ),
         const SizedBox(width: 12),
@@ -385,22 +391,28 @@ class _CategoryItem extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(item.emoji, style: const TextStyle(fontSize: 21)),
-          const SizedBox(height: 7),
-          Text(
-            item.label,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF202020),
+      child: InkWell(
+        onTap: item.label == 'Burger'
+            ? () => Navigator.pushNamed(context, Burger01Screen.routeName)
+            : null,
+        borderRadius: BorderRadius.circular(10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(item.emoji, style: const TextStyle(fontSize: 21)),
+            const SizedBox(height: 7),
+            Text(
+              item.label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF202020),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -595,7 +607,11 @@ class _BottomNav extends StatelessWidget {
           ),
           _NavIcon(
             icon: Icons.receipt_long_rounded,
-            onTap: () => Navigator.pushNamed(context, DiaChiRoutes.diachi1),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const Order01Screen(),
+              ),
+            ),
           ),
           _NavIcon(
             icon: Icons.favorite_border_rounded,
