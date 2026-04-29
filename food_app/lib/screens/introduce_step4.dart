@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'batdau.dart';
+import 'Home/app_routes.dart';
 import 'introduce_base.dart';
 
 class IntroduceStep4Screen extends StatelessWidget {
@@ -18,10 +18,8 @@ class IntroduceStep4Screen extends StatelessWidget {
       primaryLabel: 'Di toi ngay',
       showSkipFooter: false,
       onPrimaryPressed: () {
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute<void>(
-            builder: (_) => const BatDauScreen(),
-          ),
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          AppRoutes.home01,
           (route) => false,
         );
       },

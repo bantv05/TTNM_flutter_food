@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../cart/cart01.dart';
+import '../liked.dart';
 import '../Location/diachi_routes.dart';
 import '../Profile/hoso_routes.dart';
 import 'app_routes.dart';
@@ -134,18 +136,22 @@ class _AddressHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        Container(
-          width: 34,
-          height: 34,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-            border: Border.all(color: const Color(0xFFEDEDED)),
-          ),
-          child: const Icon(
-            Icons.shopping_bag_outlined,
-            size: 18,
-            color: Color(0xFF202020),
+        InkWell(
+          onTap: () => Navigator.pushNamed(context, Cart01Screen.routeName),
+          borderRadius: BorderRadius.circular(99),
+          child: Container(
+            width: 34,
+            height: 34,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: const Color(0xFFEDEDED)),
+            ),
+            child: const Icon(
+              Icons.shopping_bag_outlined,
+              size: 18,
+              color: Color(0xFF202020),
+            ),
           ),
         ),
       ],
@@ -591,7 +597,14 @@ class _BottomNav extends StatelessWidget {
             icon: Icons.receipt_long_rounded,
             onTap: () => Navigator.pushNamed(context, DiaChiRoutes.diachi1),
           ),
-          const _NavIcon(icon: Icons.favorite_border_rounded),
+          _NavIcon(
+            icon: Icons.favorite_border_rounded,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const LikedScreen(),
+              ),
+            ),
+          ),
           const _NavIcon(icon: Icons.notifications_none_rounded),
           showProfileAvatar
               ? InkWell(
