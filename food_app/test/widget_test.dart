@@ -20,16 +20,18 @@ void main() {
     expect(find.text('Rating'), findsOneWidget);
     expect(find.text('Tracking'), findsOneWidget);
     expect(find.text('Order'), findsOneWidget);
+    expect(find.text('Intro'), findsOneWidget);
+    expect(find.text('Liked'), findsOneWidget);
 
-    await tester.ensureVisible(find.text('Home'));
+    await tester.scrollUntilVisible(find.text('Home'), 300);
     await tester.pumpAndSettle();
     expect(find.text('Home'), findsOneWidget);
 
-    await tester.ensureVisible(find.text('Location'));
+    await tester.scrollUntilVisible(find.text('Location'), 200);
     await tester.pumpAndSettle();
     expect(find.text('Location'), findsOneWidget);
 
-    await tester.ensureVisible(find.text('Profile'));
+    await tester.scrollUntilVisible(find.text('Profile'), 200);
     await tester.pumpAndSettle();
     expect(find.text('Profile'), findsOneWidget);
   });

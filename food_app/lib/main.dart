@@ -17,6 +17,7 @@ import 'screens/Profile/Hoso2.dart';
 import 'screens/Profile/Hoso3.dart';
 import 'screens/Profile/Hoso4.dart';
 import 'screens/Profile/hoso_routes.dart';
+import 'screens/batdau.dart';
 import 'screens/burger/burger01.dart';
 import 'screens/burger/burger02.dart';
 import 'screens/burger/burger03.dart';
@@ -32,6 +33,7 @@ import 'screens/cart/cart01.dart';
 import 'screens/cart/cart02.dart';
 import 'screens/discount/discount01.dart';
 import 'screens/discount/discount02.dart';
+import 'screens/liked.dart';
 import 'screens/order/order01.dart';
 import 'screens/rating/rating01.dart';
 import 'screens/rating/rating02.dart';
@@ -183,6 +185,26 @@ class FlowSelectorScreen extends StatelessWidget {
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute<void>(
                 builder: (_) => const Order01Screen(),
+              ),
+            ),
+          ),
+          _FlowButton(
+            title: 'Intro',
+            subtitle:
+                'Bat dau -> Dang tai -> Hoan tat -> Chao mung -> Step 1 -> Step 2 -> Step 3 -> Step 4',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const BatDauScreen(),
+              ),
+            ),
+          ),
+          _FlowButton(
+            title: 'Liked',
+            subtitle:
+                'Liked -> Search -> Search Not Found -> Empty',
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const LikedScreen(),
               ),
             ),
           ),
