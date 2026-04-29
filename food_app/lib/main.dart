@@ -99,7 +99,7 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         return _PhoneFrameShell(child: child ?? const SizedBox.shrink());
       },
-      home: const FlowSelectorScreen(),
+      home: const BatDauScreen(),
       routes: {
         Burger01Screen.routeName: (_) => const Burger01Screen(),
         Burger02Screen.routeName: (_) => const Burger02Screen(),
@@ -138,120 +138,6 @@ class MainApp extends StatelessWidget {
         AppRoutes.home01: (context) => const Home01(),
         AppRoutes.home02: (context) => const Home02(),
       },
-    );
-  }
-}
-
-class FlowSelectorScreen extends StatelessWidget {
-  const FlowSelectorScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Food App Flows')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          _FlowButton(
-            title: 'Burger',
-            subtitle: 'Burger 01 -> Burger 10',
-            onTap: () => Navigator.pushNamed(context, Burger01Screen.routeName),
-          ),
-          _FlowButton(
-            title: 'Cart',
-            subtitle: 'Cart 01 -> Cart 02',
-            onTap: () => Navigator.pushNamed(context, Cart01Screen.routeName),
-          ),
-          _FlowButton(
-            title: 'Discount',
-            subtitle: 'Discount 01 -> Discount 02',
-            onTap: () =>
-                Navigator.pushNamed(context, Discount01Screen.routeName),
-          ),
-          _FlowButton(
-            title: 'Rating',
-            subtitle: 'Rating 01 -> Rating 04',
-            onTap: () => Navigator.pushNamed(context, Rating01Screen.routeName),
-          ),
-          _FlowButton(
-            title: 'Tracking',
-            subtitle: 'Tracking 01 -> Tracking 06',
-            onTap: () =>
-                Navigator.pushNamed(context, Tracking01Screen.routeName),
-          ),
-          _FlowButton(
-            title: 'Order',
-            subtitle: 'Order and cancel-order flow',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => const Order01Screen(),
-              ),
-            ),
-          ),
-          _FlowButton(
-            title: 'Intro',
-            subtitle:
-                'Bat dau -> Dang tai -> Hoan tat -> Chao mung -> Step 1 -> Step 2 -> Step 3 -> Step 4',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => const BatDauScreen(),
-              ),
-            ),
-          ),
-          _FlowButton(
-            title: 'Liked',
-            subtitle:
-                'Liked -> Search -> Search Not Found -> Empty',
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => const LikedScreen(),
-              ),
-            ),
-          ),
-          _FlowButton(
-            title: 'Home',
-            subtitle: 'Home flow from vina-branch',
-            onTap: () => Navigator.pushNamed(context, AppRoutes.home01),
-          ),
-          _FlowButton(
-            title: 'Location',
-            subtitle: 'Address selection and map flow',
-            onTap: () => Navigator.pushNamed(context, DiaChiRoutes.diachi1),
-          ),
-          _FlowButton(
-            title: 'Profile',
-            subtitle: 'Profile flow from vina-branch',
-            onTap: () => Navigator.pushNamed(context, HoSoRoutes.hoso1),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _FlowButton extends StatelessWidget {
-  const _FlowButton({
-    required this.title,
-    required this.subtitle,
-    required this.onTap,
-  });
-
-  final String title;
-  final String subtitle;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Card(
-        child: ListTile(
-          title: Text(title),
-          subtitle: Text(subtitle),
-          trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: onTap,
-        ),
-      ),
     );
   }
 }
