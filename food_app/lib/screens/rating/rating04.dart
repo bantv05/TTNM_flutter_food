@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Home/app_routes.dart';
 import 'rating_models.dart';
 import 'rating_widgets.dart';
 
@@ -13,7 +14,7 @@ class Rating04Screen extends StatelessWidget {
   void _finishFlow(BuildContext context) {
     Navigator.of(
       context,
-    ).pushNamedAndRemoveUntil('/cart/cart01', (route) => false);
+    ).pushNamedAndRemoveUntil(AppRoutes.home01, (route) => false);
   }
 
   @override
