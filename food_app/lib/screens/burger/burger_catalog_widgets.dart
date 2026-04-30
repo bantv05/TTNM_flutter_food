@@ -208,11 +208,13 @@ class BurgerCatalogCard extends StatelessWidget {
     required this.item,
     this.width,
     this.onTap,
+    this.onFavoriteTap,
   });
 
   final BurgerCatalogItem item;
   final double? width;
   final VoidCallback? onTap;
+  final VoidCallback? onFavoriteTap;
 
   @override
   Widget build(BuildContext context) {
@@ -257,10 +259,10 @@ class BurgerCatalogCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     top: 6,
                     right: 6,
-                    child: _FavoriteBadge(),
+                    child: _FavoriteBadge(onTap: onFavoriteTap),
                   ),
                 ],
               ),
@@ -361,21 +363,26 @@ class _CircleIconButton extends StatelessWidget {
 }
 
 class _FavoriteBadge extends StatelessWidget {
-  const _FavoriteBadge();
+  const _FavoriteBadge({this.onTap});
+
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 24,
-      width: 24,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-      ),
-      child: const Icon(
-        Icons.favorite_border_rounded,
-        color: BurgerColors.primary,
-        size: 16,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 24,
+        width: 24,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+        ),
+        child: const Icon(
+          Icons.favorite_border_rounded,
+          color: BurgerColors.primary,
+          size: 16,
+        ),
       ),
     );
   }

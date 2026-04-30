@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'burger02.dart';
 import 'burger04.dart';
 import 'burger_catalog_widgets.dart';
+import '../liked.dart';
 
 class Burger01Screen extends StatelessWidget {
   const Burger01Screen({super.key});
@@ -30,6 +31,13 @@ class Burger01Screen extends StatelessWidget {
         itemBuilder: (context, index) {
           return BurgerCatalogCard(
             item: burgerCatalogItems[index],
+            onFavoriteTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const LikedScreen(),
+                ),
+              );
+            },
             onTap: () {
               if (index == 5) {
                 Navigator.pushNamed(context, Burger04Screen.routeName);

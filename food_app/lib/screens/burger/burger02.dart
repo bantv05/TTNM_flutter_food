@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'burger_catalog_widgets.dart';
 import 'burger03.dart';
 import 'burger04.dart';
+import '../liked.dart';
 
 class Burger02Screen extends StatelessWidget {
   const Burger02Screen({super.key});
@@ -22,6 +23,13 @@ class Burger02Screen extends StatelessWidget {
           width: 132,
           child: BurgerCatalogCard(
             item: burgerCatalogItems[5],
+            onFavoriteTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const LikedScreen(),
+                ),
+              );
+            },
             onTap: () {
               Navigator.pushNamed(context, Burger04Screen.routeName);
             },

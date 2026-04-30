@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'burger05.dart';
 import 'burger09.dart';
 import 'burger_detail_widgets.dart';
+import '../liked.dart';
 
 class Burger04Screen extends StatelessWidget {
   const Burger04Screen({super.key});
@@ -20,7 +21,16 @@ class Burger04Screen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BurgerHeroImage(onBack: () => Navigator.maybePop(context)),
+            BurgerHeroImage(
+              onBack: () => Navigator.maybePop(context),
+              onFavoriteTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => const LikedScreen(),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 14),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),

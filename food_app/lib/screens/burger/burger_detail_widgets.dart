@@ -80,11 +80,13 @@ class BurgerHeroImage extends StatelessWidget {
     required this.onBack,
     this.cartCount,
     this.onCartTap,
+    this.onFavoriteTap,
   });
 
   final VoidCallback onBack;
   final int? cartCount;
   final VoidCallback? onCartTap;
+  final VoidCallback? onFavoriteTap;
 
   @override
   Widget build(BuildContext context) {
@@ -125,10 +127,10 @@ class BurgerHeroImage extends StatelessWidget {
               onTap: onCartTap,
             ),
           ),
-        const Positioned(
+        Positioned(
           right: 14,
           bottom: 18,
-          child: _FavoriteCircle(),
+          child: _FavoriteCircle(onTap: onFavoriteTap),
         ),
       ],
     );
@@ -417,21 +419,26 @@ class _RoundGlassButton extends StatelessWidget {
 }
 
 class _FavoriteCircle extends StatelessWidget {
-  const _FavoriteCircle();
+  const _FavoriteCircle({this.onTap});
+
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 34,
-      width: 34,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-      ),
-      child: const Icon(
-        Icons.favorite_border_rounded,
-        color: BurgerColors.primary,
-        size: 22,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 34,
+        width: 34,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+        ),
+        child: const Icon(
+          Icons.favorite_border_rounded,
+          color: BurgerColors.primary,
+          size: 22,
+        ),
       ),
     );
   }
