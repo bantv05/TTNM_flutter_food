@@ -79,10 +79,12 @@ class BurgerHeroImage extends StatelessWidget {
     super.key,
     required this.onBack,
     this.cartCount,
+    this.onCartTap,
   });
 
   final VoidCallback onBack;
   final int? cartCount;
+  final VoidCallback? onCartTap;
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +120,10 @@ class BurgerHeroImage extends StatelessWidget {
           Positioned(
             top: 16,
             right: 14,
-            child: _CartBadge(count: cartCount!),
+            child: _CartBadge(
+              count: cartCount!,
+              onTap: onCartTap,
+            ),
           ),
         const Positioned(
           right: 14,
@@ -562,45 +567,50 @@ class BurgerOptionRow extends StatelessWidget {
 class _CartBadge extends StatelessWidget {
   const _CartBadge({
     required this.count,
+    this.onTap,
   });
 
   final int count;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(999),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(
-            Icons.shopping_bag_rounded,
-            size: 16,
-            color: BurgerColors.primary,
-          ),
-          const SizedBox(width: 6),
-          Container(
-            height: 22,
-            width: 22,
-            decoration: const BoxDecoration(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(999),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.shopping_bag_rounded,
+              size: 16,
               color: BurgerColors.primary,
-              shape: BoxShape.circle,
             ),
-            alignment: Alignment.center,
-            child: Text(
-              '$count',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.w800,
+            const SizedBox(width: 6),
+            Container(
+              height: 22,
+              width: 22,
+              decoration: const BoxDecoration(
+                color: BurgerColors.primary,
+                shape: BoxShape.circle,
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                '$count',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

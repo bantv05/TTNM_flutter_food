@@ -13,7 +13,8 @@ class Burger08Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BurgerDetailFrame(
       bottomBar: BurgerBottomActionBar(
-        onPressed: () => Navigator.pushNamed(context, Cart01Screen.routeName),
+        enabled: false,
+        onPressed: () {},
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
@@ -23,6 +24,7 @@ class Burger08Screen extends StatelessWidget {
             BurgerHeroImage(
               onBack: () => Navigator.maybePop(context),
               cartCount: 1,
+              onCartTap: () => Navigator.pushNamed(context, Cart01Screen.routeName),
             ),
             const SizedBox(height: 14),
             Padding(
