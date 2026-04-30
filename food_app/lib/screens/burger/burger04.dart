@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'burger05.dart';
 import 'burger09.dart';
 import 'burger_detail_widgets.dart';
+import '../cart/cart01.dart';
 
 class Burger04Screen extends StatelessWidget {
   const Burger04Screen({super.key});
@@ -13,7 +14,7 @@ class Burger04Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BurgerDetailFrame(
       bottomBar: BurgerBottomActionBar(
-        onPressed: () {},
+        onPressed: () => Navigator.pushNamed(context, Cart01Screen.routeName),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 18),

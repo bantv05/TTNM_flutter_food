@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'burger02.dart';
+import 'burger04.dart';
 import 'burger_catalog_widgets.dart';
 
 class Burger01Screen extends StatelessWidget {
@@ -31,7 +32,7 @@ class Burger01Screen extends StatelessWidget {
             item: burgerCatalogItems[index],
             onTap: () {
               if (index == 5) {
-                Navigator.pushNamed(context, Burger02Screen.routeName);
+                Navigator.pushNamed(context, Burger04Screen.routeName);
               }
             },
           );

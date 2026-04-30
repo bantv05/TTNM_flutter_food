@@ -21,7 +21,7 @@ class Burger02Screen extends StatelessWidget {
         child: SizedBox(
           width: 132,
           child: BurgerCatalogCard(
-            item: burgerCatalogItems[2],
+            item: burgerCatalogItems[5],
             onTap: () {
               Navigator.pushNamed(context, Burger04Screen.routeName);
             },
