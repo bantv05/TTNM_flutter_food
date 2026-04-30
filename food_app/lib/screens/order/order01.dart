@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../Home/app_routes.dart';
+import '../Profile/hoso_routes.dart';
+import '../liked.dart';
 import 'order02.dart';
 import 'order03.dart';
 import 'order04.dart';
@@ -603,28 +606,50 @@ class _BottomNavBar extends StatelessWidget {
           top: BorderSide(color: Color(0xFFF2F2F2)),
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const [
-          _NavIcon(icon: Icons.home_outlined),
-          _ActiveOrderButton(),
-          _NavIcon(icon: Icons.favorite_border_rounded),
-          _NavIcon(icon: Icons.notifications_none_rounded),
-          _NavIcon(icon: Icons.person_outline_rounded),
-        ],
-      ),
-    );
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _NavIcon(
+              icon: Icons.home_outlined,
+              onTap: () => Navigator.pushNamedAndRemoveUntil(
+                context,
+                AppRoutes.home01,
+                (route) => false,
+              ),
+            ),
+            const _ActiveOrderButton(),
+            _NavIcon(
+              icon: Icons.favorite_border_rounded,
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const LikedScreen(),
+                ),
+              ),
+            ),
+            const _NavIcon(icon: Icons.notifications_none_rounded),
+            _NavIcon(
+              icon: Icons.person_outline_rounded,
+              onTap: () => Navigator.pushNamed(context, HoSoRoutes.hoso1),
+            ),
+          ],
+        ),
+      );
+    }
   }
-}
 
 class _NavIcon extends StatelessWidget {
-  const _NavIcon({required this.icon});
+  const _NavIcon({required this.icon, this.onTap});
 
   final IconData icon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Icon(icon, color: const Color(0xFFB8BCC2), size: 28);
+      return InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(99),
+        child: Icon(icon, color: const Color(0xFFB8BCC2), size: 28),
+      );
   }
 }
 

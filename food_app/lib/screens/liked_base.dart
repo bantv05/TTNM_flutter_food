@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'Home/app_routes.dart';
+import 'Profile/hoso_routes.dart';
+import 'order/order01.dart';
+
 const String kLikedBurgerCrispyAsset =
     'assets/images/custom/burger_crispy_white.png';
 const String kLikedBurgerCheeseAsset =
@@ -459,12 +463,28 @@ class _LikedBottomBar extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const [
-          _NavGlyph(icon: Icons.home_outlined),
-          _NavGlyph(icon: Icons.receipt_long_outlined),
-          _ActiveFavoriteNav(),
-          _NavGlyph(icon: Icons.notifications_none_rounded),
-          _NavGlyph(icon: Icons.person_outline_rounded),
+        children: [
+          _NavGlyph(
+            icon: Icons.home_outlined,
+            onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.home01,
+              (route) => false,
+            ),
+          ),
+          _NavGlyph(
+            icon: Icons.receipt_long_outlined,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const Order01Screen(),
+              ),
+            ),
+          ),
+          const _ActiveFavoriteNav(),
+          const _NavGlyph(icon: Icons.notifications_none_rounded),
+          _NavGlyph(
+            icon: Icons.person_outline_rounded,
+            onTap: () => Navigator.pushNamed(context, HoSoRoutes.hoso1),
+          ),
         ],
       ),
     );
@@ -472,13 +492,18 @@ class _LikedBottomBar extends StatelessWidget {
 }
 
 class _NavGlyph extends StatelessWidget {
-  const _NavGlyph({required this.icon});
+  const _NavGlyph({required this.icon, this.onTap});
 
   final IconData icon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Icon(icon, size: 18, color: const Color(0xFFB8BDC6));
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(99),
+      child: Icon(icon, size: 18, color: const Color(0xFFB8BDC6)),
+    );
   }
 }
 

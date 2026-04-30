@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../Home/app_routes.dart';
 import '../Location/diachi_routes.dart';
+import '../liked.dart';
+import '../order/order01.dart';
 
 class ProfileShell extends StatelessWidget {
   const ProfileShell({
@@ -418,9 +420,20 @@ class _BottomBar extends StatelessWidget {
           ),
           _BottomIcon(
             icon: Icons.receipt_long_outlined,
-            onTap: () => Navigator.pushNamed(context, DiaChiRoutes.diachi1),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const Order01Screen(),
+              ),
+            ),
           ),
-          const _BottomIcon(icon: Icons.favorite_border_rounded),
+          _BottomIcon(
+            icon: Icons.favorite_border_rounded,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => const LikedScreen(),
+              ),
+            ),
+          ),
           const _BottomIcon(icon: Icons.notifications_none_rounded),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
