@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Home/app_routes.dart';
 import 'liked_base.dart';
 import 'liked_search.dart';
 
@@ -10,6 +11,12 @@ class LikedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return LikedScreenShell(
       searchText: '',
+      onBackPressed: () {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          AppRoutes.home01,
+          (route) => false,
+        );
+      },
       onSearchPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute<void>(
