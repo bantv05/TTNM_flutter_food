@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../cancelorder/cancelorder1.dart';
 import '../rating/rating01.dart';
 
 const Color trackingPrimary = Color(0xFFFF9900);
@@ -146,11 +147,10 @@ class _TrackingFlowScreenState extends State<TrackingFlowScreen> {
                               widget.stage == TrackingStage.success,
                           onCancel: canCancel
                               ? () {
-                                  Navigator.of(context).popUntil(
-                                    (route) =>
-                                        route.settings.name == '/cart/cart02' ||
-                                        route.settings.name == '/cart/cart01' ||
-                                        route.isFirst,
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute<void>(
+                                      builder: (_) => const CancelOrder01Screen(),
+                                    ),
                                   );
                                 }
                               : null,
